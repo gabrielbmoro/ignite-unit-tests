@@ -2,7 +2,7 @@ import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUs
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 import { hash } from "bcryptjs";
-import { AppError } from "../../../../shared/errors/AppError";
+import { IncorrectEmailOrPasswordError } from "./IncorrectEmailOrPasswordError";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let userRepository: IUsersRepository;
@@ -45,7 +45,7 @@ describe("AuthenticateUserUseCase", () => {
         email: "test@test.com",
         password: "test",
       });
-    }).rejects.toBeInstanceOf(AppError);
+    }).rejects.toBeInstanceOf(IncorrectEmailOrPasswordError);
   });
 
   it("should not be able to authenticate an invalid email", async () => {
@@ -62,6 +62,6 @@ describe("AuthenticateUserUseCase", () => {
         email: "test@gmail.com",
         password: "test1234",
       });
-    }).rejects.toBeInstanceOf(AppError);
+    }).rejects.toBeInstanceOf(IncorrectEmailOrPasswordError);
   });
 });

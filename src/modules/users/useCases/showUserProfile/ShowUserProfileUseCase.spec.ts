@@ -2,7 +2,7 @@ import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUs
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ShowUserProfileUseCase } from "./ShowUserProfileUseCase";
 import { v4 as uuidV4 } from "uuid";
-import { AppError } from "../../../../shared/errors/AppError";
+import { ShowUserProfileError } from "./ShowUserProfileError";
 
 let showUserProfileUseCase: ShowUserProfileUseCase;
 let userRepository: IUsersRepository;
@@ -39,6 +39,6 @@ describe("ShowUserProfileUseCase", () => {
       const userId = uuidV4();
 
       await showUserProfileUseCase.execute(userId);
-    }).rejects.toBeInstanceOf(AppError);
+    }).rejects.toBeInstanceOf(ShowUserProfileError);
   });
 });
