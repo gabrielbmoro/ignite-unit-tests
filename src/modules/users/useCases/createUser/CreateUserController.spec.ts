@@ -3,7 +3,6 @@ import { app } from "../../../../app";
 import request from "supertest";
 
 import { Connection, createConnection } from "typeorm";
-import { CreateUserError } from "./CreateUserError";
 
 let connection: Connection;
 
