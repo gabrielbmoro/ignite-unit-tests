@@ -7,7 +7,6 @@ import { hash } from "bcryptjs";
 import { v4 as uuidV4 } from "uuid";
 
 import { Connection, createConnection } from "typeorm";
-import { connect } from "node:http2";
 
 let connection: Connection;
 
